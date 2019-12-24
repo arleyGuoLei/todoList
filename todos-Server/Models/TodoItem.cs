@@ -56,7 +56,7 @@ namespace todos_Server.Models {
       if (db.IsConnect ()) {
         try {
           Console.WriteLine ("Connecting to MySQL...");
-          string sql = "SELECT * FROM todoList.items LIMIT " + (page - 1) * size + "," + size;
+          string sql = "SELECT * FROM todoList.items ORDER BY id DESC LIMIT " + (page - 1) * size + "," + size;
           Console.WriteLine ("sql is => " + sql);
           MySqlCommand cmd = new MySqlCommand (sql, db.Connection);
           MySqlDataReader rdr = cmd.ExecuteReader ();

@@ -30,3 +30,14 @@ export function overItem(id) {
     }
   })
 }
+
+export function insertItem(title, expectTime) {
+  return request({
+    url: '/insert',
+    method: 'POST',
+    data: {
+      title,
+      expectTime
+    }
+  })
+}

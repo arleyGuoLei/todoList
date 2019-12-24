@@ -2,6 +2,13 @@
 
 本"项目"(Demo)为学校asp课设，使用`ASP.NET Core api` 和 `VUE`搭建，下面给出具体文档和如何写的项目。
 
+![完成事项](https://i.loli.net/2019/12/24/n2TcuOt9XGpHvds.png)
+
+![新增事项+数据显示](https://i.loli.net/2019/12/24/e2MaYvRLSntTbPd.png)
+
+![空白无数据](https://i.loli.net/2019/12/24/R1E9QnyLKI7gc4u.png)
+
+![翻页操作](https://i.loli.net/2019/12/24/XTjquKUHg2dPwNZ.png)
 
 ![数据库](https://i.loli.net/2019/12/23/PpiJjIthxSAr781.png)
 
@@ -62,3 +69,16 @@ dotnet new webapi -o todos-Server --no-https
 ```
 
 一行命令搞定，初始化了一个不使用https的api基本目录。
+
+
+## 前端内容
+
+前端基于VUE，使用Element-UI，基于VUE-cli生成初始化仓库。
+
+### 开发/运行
+
+```bash
+cd todos-fe
+npm install
+npm run serve
+```

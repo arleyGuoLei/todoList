@@ -5,7 +5,8 @@
         待办事项
       </el-header>
       <el-main>
-        <item-table />
+        <insert-form @insertSuccess="insertSuccess" />
+        <item-table ref="table" />
       </el-main>
       <el-footer class="footer">
         © 计科B163班 郭磊 20160701433 - ASP.NET 课设
@@ -15,14 +16,14 @@
 </template>
 
 <script>
-// import InsertItem from './components/InsertItem'
+import InsertForm from './components/InsertForm'
 import ItemTable from './components/ItemTable'
 
 export default {
   name: 'App',
   components: {
-    ItemTable
-    // InsertItem,
+    ItemTable,
+    InsertForm
   },
   data() {
     return {
@@ -31,7 +32,9 @@ export default {
   mounted() {
   },
   methods: {
-
+    insertSuccess() {
+      this.$refs.table.getData()
+    }
   }
 }
 </script>

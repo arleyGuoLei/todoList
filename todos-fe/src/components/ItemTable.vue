@@ -146,7 +146,7 @@ export default {
         })
       })
     },
-    getData(page = 1, size = 10) {
+    getData(page = this.currentPage, size = this.pageSize) {
       this.loading = true
       getList(page, size).then(data => {
         const { sum = 0, list = [] } = data
