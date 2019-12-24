@@ -27,7 +27,6 @@ CREATE TABLE `items` (
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `overTime` datetime DEFAULT NULL COMMENT '实际完成时间',
   `expectTime` datetime DEFAULT NULL COMMENT '预期完成时间',
-  `deleteTime` datetime DEFAULT NULL COMMENT '删除时间',
   `isComplete` enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'false' COMMENT '完成状态',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

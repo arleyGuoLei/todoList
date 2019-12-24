@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <el-container>
+      <el-header>
+        待办事项
+      </el-header>
+      <el-main>
+        <item-table />
+      </el-main>
+      <el-footer class="footer">
+        © 计科B163班 郭磊 20160701433 - ASP.NET 课设
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import InsertItem from './components/InsertItem'
+import ItemTable from './components/ItemTable'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld
+    ItemTable
+    // InsertItem,
+  },
+  data() {
+    return {
+    }
+  },
+  mounted() {
+  },
+  methods: {
+
   }
 }
 </script>
-
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.el-header{
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-size: 32px;
+  font-weight: 600;
+  margin-top: 30px;
+  line-height: 60px;
+  height: 60px;
+}
+.footer {
+  margin-top: 10px;
+  text-align: center;
 }
 </style>

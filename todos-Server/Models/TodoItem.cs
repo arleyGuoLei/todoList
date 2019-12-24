@@ -12,7 +12,6 @@ namespace todos_Server.Models {
     static string CREATE_TIME = "createTime";
     static string OVER_TIME = "overTime";
     static string EXPECT_TIME = "expectTime";
-    static string DELETE_TIME = "deleteTime";
 
     int id;
     string title;
@@ -20,7 +19,6 @@ namespace todos_Server.Models {
     DateTime? createTime;
     DateTime? overTime;
     DateTime? expectTime;
-    DateTime? deleteTime;
 
     public int Id {
       get => id;
@@ -52,11 +50,6 @@ namespace todos_Server.Models {
       set => expectTime = value;
     }
 
-    public DateTime? DeleteTime {
-      get => deleteTime;
-      set => deleteTime = value;
-    }
-
     public static List<TodoItem> getAll (int page, int size = 20) {
       List<TodoItem> todoItems = new List<TodoItem> ();
       DBConnection db = DBConnection.Instance ();
@@ -80,11 +73,6 @@ namespace todos_Server.Models {
             } else {
               item.overTime = (DateTime) rdr[OVER_TIME];
             }
-            if (Convert.IsDBNull (rdr[DELETE_TIME])) {
-              item.deleteTime = null;
-            } else {
-              item.deleteTime = (DateTime) rdr[DELETE_TIME];
-            }
             if (Convert.IsDBNull (rdr[EXPECT_TIME])) {
               item.expectTime = null;
             } else {
@@ -99,6 +87,25 @@ namespace todos_Server.Models {
         }
       }
       return todoItems;
+    }
+
+    public static long getSumPage() {
+      DBConnection db = DBConnection.Instance ();
+      long sum = 0;
+      if (db.IsConnect ()) {
+        try {
+          Console.WriteLine ("Connecting to MySQL...");
+          string sql = "SELECT COUNT(*) AS nums FROM todoList.items";
+          Console.WriteLine ("sql is => " + sql);
+          MySqlCommand cmd = new MySqlCommand (sql, db.Connection);
+          sum = (long)cmd.ExecuteScalar(); 
+          db.Close();
+        } catch (Exception ex) {
+          Console.WriteLine (ex.ToString ());
+          return sum;
+        }
+      }
+      return sum;
     }
 
     public static string insertItem (string title, DateTime expectTime) {

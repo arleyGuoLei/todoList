@@ -15,8 +15,13 @@ namespace todos_Server.Controllers {
 
     [Route ("getList")]
     [HttpGet]
-    public IEnumerable<TodoItem> Get ([FromQuery] int page, [FromQuery] int size = 20) {
-      return TodoItem.getAll (page, size);
+    public Dictionary<string, Object> Get ([FromQuery] int page, [FromQuery] int size = 20) {
+      long sum = TodoItem.getSumPage();
+      IEnumerable<TodoItem> items = TodoItem.getAll (page, size);
+      Dictionary<string, Object> obj = new Dictionary<string, Object>();
+      obj.Add("sum", sum);
+      obj.Add("list", items);
+      return obj;
     }
 
     [Route ("insert")]
